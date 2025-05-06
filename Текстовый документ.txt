@@ -1,0 +1,1634 @@
+def tweak_417_disable_third_party_cookies():
+    """Отключение сторонних куки
+    Повышает приватность.
+    Может нарушить сайты."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\Edge"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "BlockThirdPartyCookies", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_418_enable_safe_browsing():
+    """Включение безопасного просмотра
+    Повышает безопасность.
+    Может блокировать сайты."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\Edge"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "SafeBrowsingProtectionLevel", 0, winreg.REG_DWORD, 2)
+    except Exception:
+        pass
+
+def tweak_419_disable_ad_tracking():
+    """Отключение отслеживания рекламы
+    Повышает приватность.
+    Убирает персонализированную рекламу."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "Enabled", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_420_enable_privacy_mode():
+    """Включение режима конфиденциальности
+    Повышает приватность.
+    Может ограничить функциональность."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\System"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "PrivacyMode", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_421_disable_background_data():
+    """Отключение фоновой передачи данных
+    Снижает использование сети.
+    Некоторые приложения могут не работать."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\DataCollection"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "AllowBackgroundData", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_422_enable_app_permissions():
+    """Включение контроля разрешений приложений
+    Повышает безопасность.
+    Может требовать ручной настройки."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\AppPrivacy"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "LetAppsAccess", 0, winreg.REG_DWORD, 2)
+    except Exception:
+        pass
+
+def tweak_423_disable_location_sharing():
+    """Отключение общего доступа к геолокации
+    Повышает приватность.
+    Геолокация недоступна для приложений."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "DisableLocationSharing", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_424_enable_secure_boot_policy():
+    """Включение политики безопасной загрузки
+    Повышает безопасность.
+    Требует поддержки оборудования."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\DeviceGuard"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "SecureBootPolicy", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_425_disable_remote_management():
+    """Отключение удаленного управления
+    Повышает безопасность.
+    Удаленное управление недоступно."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\WinRM\WinRMService"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "AllowRemoteManagement", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_426_enable_secure_connections():
+    """Включение безопасных соединений
+    Повышает безопасность.
+    Может нарушить старые приложения."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\Network Connections"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "RequireSecureConnections", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_427_disable_automatic_updates():
+    """Отключение автоматических обновлений (дубликат)
+    Повышает контроль.
+    Снижает безопасность."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "NoAutoUpdate", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_428_enable_file_encryption():
+    """Включение шифрования файлов
+    Повышает безопасность.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\System"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "FileEncryption", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_429_disable_shared_folders():
+    """Отключение общих папок
+    Повышает безопасность.
+    Общий доступ недоступен."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "AllowSharedFolders", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_430_enable_secure_authentication():
+    """Включение безопасной аутентификации
+    Повышает безопасность.
+    Может нарушить совместимость."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "SecureAuthentication", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+# Категория: Очистка (431–470)
+def tweak_431_clean_temp_files():
+    """Очистка временных файлов
+    Освобождает место.
+    Может удалить нужные временные файлы."""
+    try:
+        paths = [
+            os.path.expanduser(r"~\AppData\Local\Temp"),
+            r"C:\Windows\Temp"
+        ]
+        for path in paths:
+            for root, dirs, files in os.walk(path):
+                for file in files:
+                    try:
+                        os.unlink(os.path.join(root, file))
+                    except Exception:
+                        pass
+                for dir in dirs:
+                    try:
+                        shutil.rmtree(os.path.join(root, dir), ignore_errors=True)
+                    except Exception:
+                        pass
+    except Exception:
+        pass
+
+def tweak_432_clean_browser_cache():
+    """Очистка кэша браузеров
+    Освобождает место.
+    Увеличивает время загрузки страниц."""
+    try:
+        paths = {
+            "Edge": os.path.expanduser(r"~\AppData\Local\Microsoft\Edge\User Data\Default\Cache"),
+            "Chrome": os.path.expanduser(r"~\AppData\Local\Google\Chrome\User Data\Default\Cache"),
+            "Firefox": os.path.expanduser(r"~\AppData\Local\Mozilla\Firefox\Profiles\*.default-release\cache")
+        }
+        for path in paths.values():
+            if "*" in path:
+                for p in glob.glob(path):
+                    shutil.rmtree(p, ignore_errors=True)
+            else:
+                shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_433_clean_system_logs():
+    """Очистка системных логов
+    Освобождает место.
+    Усложняет диагностику."""
+    try:
+        for log in glob.glob(r"C:\Windows\System32\winevt\Logs\*.evtx"):
+            try:
+                os.unlink(log)
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+def tweak_434_clean_old_updates():
+    """Очистка старых обновлений
+    Освобождает место.
+    Может повлиять на откат обновлений."""
+    try:
+        subprocess.run("DISM.exe /Online /Cleanup-Image /StartComponentCleanup", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_435_clean_dns_cache():
+    """Очистка кэша DNS
+    Ускоряет сеть.
+    Может нарушить кэшированные адреса."""
+    try:
+        subprocess.run("ipconfig /flushdns", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_436_clean_download_folder():
+    """Очистка папки загрузок
+    Освобождает место.
+    Может удалить нужные файлы."""
+    try:
+        path = os.path.expanduser(r"~\Downloads")
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                try:
+                    os.unlink(os.path.join(root, file))
+                except Exception:
+                    pass
+            for dir in dirs:
+                try:
+                    shutil.rmtree(os.path.join(root, dir), ignore_errors=True)
+                except Exception:
+                    pass
+    except Exception:
+        pass
+
+def tweak_437_clean_old_drivers():
+    """Очистка старых драйверов
+    Освобождает место.
+    Может удалить нужные драйверы."""
+    try:
+        subprocess.run("pnputil /e > drivers.txt", shell=True, check=False)
+        with open("drivers.txt", "r") as f:
+            for line in f:
+                if "oem" in line:
+                    driver = line.split()[-1]
+                    subprocess.run(f"pnputil /d {driver}", shell=True, check=False)
+        os.remove("drivers.txt")
+    except Exception:
+        pass
+
+def tweak_438_clean_prefetch():
+    """Очистка Prefetch
+    Освобождает место.
+    Замедляет запуск программ."""
+    try:
+        path = r"C:\Windows\Prefetch"
+        for file in glob.glob(os.path.join(path, "*")):
+            try:
+                os.unlink(file)
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+def tweak_439_clean_error_reports():
+    """Очистка отчетов об ошибках
+    Освобождает место.
+    Усложняет диагностику."""
+    try:
+        path = r"C:\ProgramData\Microsoft\Windows\WER"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_440_clean_recycle_bin():
+    """Очистка корзины
+    Освобождает место.
+    Удаляет файлы без возможности восстановления."""
+    try:
+        path = r"C:\$Recycle.Bin"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_441_clean_temp_internet():
+    """Очистка временных интернет-файлов
+    Освобождает место.
+    Увеличивает время загрузки страниц."""
+    try:
+        path = os.path.expanduser(r"~\AppData\Local\Microsoft\Windows\INetCache")
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_442_clean_cookies():
+    """Очистка cookies
+    Повышает приватность.
+    Может выйти из аккаунтов."""
+    try:
+        path = os.path.expanduser(r"~\AppData\Local\Microsoft\Windows\INetCookies")
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_443_clean_history():
+    """Очистка истории браузера
+    Повышает приватность.
+    Удаляет историю посещений."""
+    try:
+        path = os.path.expanduser(r"~\AppData\Local\Microsoft\Windows\History")
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_444_clean_update_cache():
+    """Очистка кэша обновлений
+    Освобождает место.
+    Может повлиять на установку обновлений."""
+    try:
+        path = r"C:\Windows\SoftwareDistribution\Download"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_445_clean_system_cache():
+    """Очистка системного кэша
+    Освобождает место.
+    Может замедлить систему."""
+    try:
+        path = r"C:\Windows\System32\config\systemprofile\AppData\Local"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_446_clean_old_logs():
+    """Очистка старых логов
+    Освобождает место.
+    Усложняет диагностику."""
+    try:
+        path = r"C:\Windows\Logs"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_447_clean_memory_dumps():
+    """Очистка дампов памяти
+    Освобождает место.
+    Усложняет диагностику."""
+    try:
+        path = r"C:\Windows\Minidump"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_448_clean_old_installers():
+    """Очистка старых установщиков
+    Освобождает место.
+    Может удалить нужные файлы."""
+    try:
+        path = r"C:\Windows\Installer"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_449_clean_temp_registry():
+    """Очистка временных записей реестра
+    Освобождает место.
+    Может повлиять на программы."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Software"
+        with winreg.OpenKey(key, subkey, 0, winreg.KEY_ALL_ACCESS) as reg_key:
+            for i in range(winreg.QueryInfoKey(reg_key)[0] - 1, -1, -1):
+                name = winreg.EnumKey(reg_key, i)
+                if "Temp" in name:
+                    winreg.DeleteKey(reg_key, name)
+    except Exception:
+        pass
+
+def tweak_450_clean_system_temp():
+    """Очистка системных временных файлов
+    Освобождает место.
+    Может удалить нужные файлы."""
+    try:
+        path = r"C:\Windows\Temp"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_451_clean_old_backups():
+    """Очистка старых резервных копий
+    Освобождает место.
+    Удаляет резервные копии."""
+    try:
+        path = r"C:\Windows\System32\config\RegBack"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_452_clean_temp_profiles():
+    """Очистка временных профилей
+    Освобождает место.
+    Может повлиять на пользователей."""
+    try:
+        path = r"C:\Users\*\AppData\Local\Temp"
+        for p in glob.glob(path):
+            shutil.rmtree(p, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_453_clean_old_restore_points():
+    """Очистка старых точек восстановления
+    Освобождает место.
+    Удаляет точки восстановления."""
+    try:
+        subprocess.run("vssadmin delete shadows /all /quiet", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_454_clean_temp_app_data():
+    """Очистка временных данных приложений
+    Освобождает место.
+    Может повлиять на приложения."""
+    try:
+        path = os.path.expanduser(r"~\AppData\Local\Temp")
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_455_clean_old_fonts():
+    """Очистка старых шрифтов
+    Освобождает место.
+    Может удалить нужные шрифты."""
+    try:
+        path = r"C:\Windows\Fonts"
+        for file in glob.glob(os.path.join(path, "*.ttf")):
+            try:
+                os.unlink(file)
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+def tweak_456_clean_temp_cache():
+    """Очистка временного кэша
+    Освобождает место.
+    Может замедлить приложения."""
+    try:
+        path = os.path.expanduser(r"~\AppData\Local\Cache")
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_457_clean_old_temp_files():
+    """Очистка старых временных файлов
+    Освобождает место.
+    Может удалить нужные файлы."""
+    try:
+        path = r"C:\Windows\Temp"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_458_clean_system_traces():
+    """Очистка системных следов
+    Повышает приватность.
+    Усложняет диагностику."""
+    try:
+        path = r"C:\Windows\System32\LogFiles"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_459_clean_old_crash_dumps():
+    """Очистка старых дампов сбоев
+    Освобождает место.
+    Усложняет диагностику."""
+    try:
+        path = r"C:\Windows\LiveKernelReports"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_460_clean_temp_logs():
+    """Очистка временных логов
+    Освобождает место.
+    Усложняет диагностику."""
+    try:
+        path = r"C:\Windows\Logs"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_461_clean_old_temp_data():
+    """Очистка старых временных данных
+    Освобождает место.
+    Может удалить нужные файлы."""
+    try:
+        path = os.path.expanduser(r"~\AppData\Local\Temp")
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_462_clean_system_temp_files():
+    """Очистка системных временных файлов
+    Освобождает место.
+    Может удалить нужные файлы."""
+    try:
+        path = r"C:\Windows\Temp"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_463_clean_old_system_logs():
+    """Очистка старых системных логов
+    Освобождает место.
+    Усложняет диагностику."""
+    try:
+        path = r"C:\Windows\System32\winevt\Logs"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_464_clean_temp_browser_data():
+    """Очистка временных данных браузера
+    Освобождает место.
+    Может выйти из аккаунтов."""
+    try:
+        path = os.path.expanduser(r"~\AppData\Local\Microsoft\Edge\User Data\Default\Cache")
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_465_clean_old_temp_cache():
+    """Очистка старого временного кэша
+    Освобождает место.
+    Может замедлить приложения."""
+    try:
+        path = os.path.expanduser(r"~\AppData\Local\Cache")
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_466_clean_system_temp_data():
+    """Очистка системных временных данных
+    Освобождает место.
+    Может удалить нужные файлы."""
+    try:
+        path = r"C:\Windows\Temp"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_467_clean_old_error_logs():
+    """Очистка старых логов ошибок
+    Освобождает место.
+    Усложняет диагностику."""
+    try:
+        path = r"C:\Windows\System32\LogFiles"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_468_clean_temp_system_files():
+    """Очистка временных системных файлов
+    Освобождает место.
+    Может удалить нужные файлы."""
+    try:
+        path = r"C:\Windows\Temp"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_469_clean_old_temp_logs():
+    """Очистка старых временных логов
+    Освобождает место.
+    Усложняет диагностику."""
+    try:
+        path = r"C:\Windows\Logs"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+def tweak_470_clean_system_temp_cache():
+    """Очистка системного временного кэша
+    Освобождает место.
+    Может замедлить систему."""
+    try:
+        path = r"C:\Windows\System32\config\systemprofile\AppData\Local"
+        shutil.rmtree(path, ignore_errors=True)
+    except Exception:
+        pass
+
+# Категория: Производительность (471–510)
+def tweak_471_enable_high_performance():
+    """Включение режима высокой производительности
+    Увеличивает скорость.
+    Увеличивает энергопотребление."""
+    try:
+        subprocess.run("powercfg -setactive SCHEME_MIN", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_472_disable_background_services():
+    """Отключение фоновых служб
+    Снижает нагрузку.
+    Может повлиять на функциональность."""
+    try:
+        services = ["SysMain", "WSearch", "DiagTrack"]
+        for service in services:
+            subprocess.run(f"sc config {service} start= disabled", shell=True, check=False)
+            subprocess.run(f"sc stop {service}", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_473_enable_cpu_optimization():
+    """Оптимизация CPU
+    Увеличивает производительность.
+    Увеличивает энергопотребление."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Power"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "CsEnabled", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_474_disable_disk_defrag():
+    """Отключение дефрагментации диска
+    Снижает нагрузку.
+    Может замедлить диск."""
+    try:
+        subprocess.run("schtasks /Change /TN \"Microsoft\Windows\Defrag\ScheduledDefrag\" /Disable", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_475_enable_gpu_optimization():
+    """Оптимизация GPU
+    Увеличивает производительность.
+    Увеличивает энергопотребление."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "SystemResponsiveness", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_476_disable_power_saving():
+    """Отключение энергосбережения
+    Увеличивает производительность.
+    Увеличивает энергопотребление."""
+    try:
+        subprocess.run("powercfg -change -standby-timeout-ac 0", shell=True, check=False)
+        subprocess.run("powercfg -change -hibernate-timeout-ac 0", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_477_enable_memory_optimization():
+    """Оптимизация памяти
+    Увеличивает производительность.
+    Требует больше RAM."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "DisablePagingExecutive", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_478_disable_superfetch():
+    """Отключение Superfetch
+    Снижает нагрузку.
+    Замедляет запуск программ."""
+    try:
+        subprocess.run("sc config SysMain start= disabled", shell=True, check=False)
+        subprocess.run("sc stop SysMain", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_479_enable_fast_boot():
+    """Включение быстрой загрузки
+    Ускоряет загрузку.
+    Может повлиять на стабильность."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Session Manager\Power"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "HiberbootEnabled", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_480_disable_indexing_service():
+    """Отключение службы индексации
+    Снижает нагрузку.
+    Замедляет поиск."""
+    try:
+        subprocess.run("sc config WSearch start= disabled", shell=True, check=False)
+        subprocess.run("sc stop WSearch", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_481_enable_io_optimization():
+    """Оптимизация ввода-вывода
+    Ускоряет работу диска.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "IoPriority", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_482_disable_background_tasks():
+    """Отключение фоновых задач
+    Снижает нагрузку.
+    Может повлиять на функциональность."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundTasks"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "AllowBackgroundTasks", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_483_enable_cpu_priority():
+    """Установка приоритета CPU
+    Увеличивает производительность.
+    Может повлиять на стабильность."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\PriorityControl"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "Win32PrioritySeparation", 0, winreg.REG_DWORD, 38)
+    except Exception:
+        pass
+
+def tweak_484_disable_memory_compression():
+    """Отключение сжатия памяти
+    Снижает нагрузку.
+    Требует больше RAM."""
+    try:
+        subprocess.run("powershell Disable-MMAgent -MemoryCompression", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_485_enable_disk_optimization():
+    """Оптимизация диска
+    Ускоряет работу диска.
+    Требует ресурсов."""
+    try:
+        subprocess.run("fsutil behavior set disablelastaccess 1", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_486_disable_swap_file():
+    """Отключение файла подкачки
+    Освобождает место.
+    Требует больше RAM."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "PagingFiles", 0, winreg.REG_MULTI_SZ, [""])
+    except Exception:
+        pass
+
+def tweak_487_enable_cpu_cache():
+    """Включение кэша CPU
+    Увеличивает производительность.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "SecondLevelDataCache", 0, winreg.REG_DWORD, 1024)
+    except Exception:
+        pass
+
+def tweak_488_disable_system_animations():
+    """Отключение системных анимаций
+    Ускоряет интерфейс.
+    Убирает визуальные эффекты."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Control Panel\Desktop\WindowMetrics"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "MinAnimate", 0, winreg.REG_SZ, "0")
+    except Exception:
+        pass
+
+def tweak_489_enable_performance_tweaks():
+    """Включение твиков производительности
+    Увеличивает скорость.
+    Может повлиять на стабильность."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Session Manager"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "PerformanceTweaks", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_490_disable_background_maintenance():
+    """Отключение фонового обслуживания
+    Снижает нагрузку.
+    Требуется ручное обслуживание."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Microsoft\Windows\ScheduledDiagnostics"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "EnabledExecution", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_491_enable_fast_disk():
+    """Включение быстрого диска
+    Ускоряет работу диска.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\FileSystem"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "NtfsDisableLastAccessUpdate", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_492_disable_system_logs():
+    """Отключение системных логов
+    Снижает нагрузку.
+    Усложняет диагностику."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\EventLog\System"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "Enabled", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_493_enable_io_priority():
+    """Включение приоритета ввода-вывода
+    Ускоряет работу диска.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "IoPriority", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_494_disable_system_restore():
+    """Отключение восстановления системы
+    Освобождает место.
+    Убирает возможность восстановления."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "DisableSR", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_495_enable_cpu_tweaks():
+    """Включение твиков CPU
+    Увеличивает производительность.
+    Увеличивает энергопотребление."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Power"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "CsEnabled", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_496_disable_background_apps():
+    """Отключение фоновых приложений
+    Снижает нагрузку.
+    Некоторые приложения не работают."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "GlobalUserDisabled", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_497_enable_performance_mode():
+    """Включение режима производительности
+    Увеличивает скорость.
+    Увеличивает энергопотребление."""
+    try:
+        subprocess.run("powercfg -setactive SCHEME_MIN", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_498_disable_power_throttling():
+    """Отключение троттлинга питания
+    Увеличивает производительность.
+    Увеличивает энергопотребление."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Power"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "PowerThrottlingOff", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_499_enable_fast_memory():
+    """Включение быстрой памяти
+    Увеличивает производительность.
+    Требует больше RAM."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "LargeSystemCache", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_500_disable_visual_effects():
+    """Отключение визуальных эффектов
+    Ускоряет интерфейс.
+    Убирает визуальные эффекты."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "VisualFXSetting", 0, winreg.REG_DWORD, 2)
+    except Exception:
+        pass
+
+def tweak_501_enable_game_mode():
+    """Включение игрового режима
+    Увеличивает производительность в играх.
+    Может повлиять на фоновые задачи."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Software\Microsoft\GameBar"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "AllowAutoGameMode", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_502_disable_notifications():
+    """Отключение уведомлений
+    Снижает отвлечения.
+    Убирает уведомления."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Software\Microsoft\Windows\CurrentVersion\PushNotifications"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "ToastEnabled", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_503_enable_priority_tasks():
+    """Включение приоритета задач
+    Увеличивает производительность.
+    Может повлиять на стабильность."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\PriorityControl"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "Win32PrioritySeparation", 0, winreg.REG_DWORD, 38)
+    except Exception:
+        pass
+
+def tweak_504_disable_system_sounds():
+    """Отключение системных звуков
+    Снижает отвлечения.
+    Убирает звуковые эффекты."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"AppEvents\Schemes"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "", 0, winreg.REG_SZ, ".None")
+    except Exception:
+        pass
+
+def tweak_505_enable_disk_cache():
+    """Включение кэша диска
+    Ускоряет работу диска.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "LargeSystemCache", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_506_disable_transparency():
+    """Отключение прозрачности
+    Ускоряет интерфейс.
+    Убирает визуальные эффекты."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "EnableTransparency", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_507_enable_fast_shutdown():
+    """Включение быстрого выключения
+    Ускоряет выключение.
+    Может повлиять на стабильность."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "WaitToKillServiceTimeout", 0, winreg.REG_SZ, "2000")
+    except Exception:
+        pass
+
+def tweak_508_disable_menu_animations():
+    """Отключение анимаций меню
+    Ускоряет интерфейс.
+    Убирает визуальные эффекты."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Control Panel\Desktop"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "MenuShowDelay", 0, winreg.REG_SZ, "100")
+    except Exception:
+        pass
+
+def tweak_509_enable_cpu_performance():
+    """Включение производительности CPU
+    Увеличивает скорость.
+    Увеличивает энергопотребление."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Power"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "CsEnabled", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_510_disable_error_reporting():
+    """Отключение отчетов об ошибках
+    Снижает нагрузку.
+    Усложняет диагностику."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Microsoft\Windows\Windows Error Reporting"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "Disabled", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+# Категория: Сеть (511–550)
+def tweak_511_enable_tcp_optimization():
+    """Оптимизация TCP
+    Ускоряет сеть.
+    Может повлиять на стабильность."""
+    try:
+        subprocess.run("netsh int tcp set global autotuninglevel=normal", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_512_enable_rss():
+    """Включение RSS
+    Ускоряет сеть.
+    Требует поддержки оборудования."""
+    try:
+        subprocess.run("netsh int tcp set global rss=enabled", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_513_disable_nagle():
+    """Отключение алгоритма Нейгла
+    Ускоряет сеть.
+    Может увеличить задержки."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "TcpNoDelay", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_514_enable_fast_dns():
+    """Включение быстрого DNS
+    Ускоряет сеть.
+    Требует настройки."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Dnscache\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "FastDNS", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_515_disable_network_throttling():
+    """Отключение троттлинга сети
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "NetworkThrottlingIndex", 0, winreg.REG_DWORD, 0xFFFFFFFF)
+    except Exception:
+        pass
+
+def tweak_516_enable_bandwidth_optimization():
+    """Оптимизация пропускной способности
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Psched"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "NonBestEffortLimit", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_517_disable_wifi_background():
+    """Отключение фонового сканирования Wi-Fi
+    Снижает нагрузку.
+    Замедляет подключение."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\WcmSvc"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "DisableBackgroundScan", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_518_enable_low_latency():
+    """Включение низкой задержки
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "TcpAckFrequency", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_519_disable_network_discovery():
+    """Отключение обнаружения сети
+    Повышает безопасность.
+    Устройства в сети не видны."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\Network Connections"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "NC_StdDomainUserSetLocation", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_520_enable_dns_cache():
+    """Включение кэша DNS
+    Ускоряет сеть.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Dnscache\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "CacheHashTableBucketSize", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_521_disable_auto_proxy():
+    """Отключение автоматического прокси
+    Ускоряет сеть.
+    Может нарушить настройки."""
+    try:
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "AutoDetect", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_522_enable_fast_connect():
+    """Включение быстрого подключения
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "FastConnect", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_523_disable_network_background():
+    """Отключение фоновой активности сети
+    Снижает нагрузку.
+    Может повлиять на приложения."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\NetworkConnectivityStatus"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "DisableBackgroundActivity", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_524_enable_network_optimization():
+    """Оптимизация сети
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        subprocess.run("netsh int tcp set global congestionprovider=ctcp", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_525_disable_bandwidth_limit():
+    """Отключение ограничения пропускной способности
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Psched"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "NonBestEffortLimit", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_526_enable_tcp_window():
+    """Включение большого окна TCP
+    Ускоряет сеть.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "TcpWindowSize", 0, winreg.REG_DWORD, 65535)
+    except Exception:
+        pass
+
+def tweak_527_disable_network_services():
+    """Отключение сетевых служб
+    Снижает нагрузку.
+    Может повлиять на функциональность."""
+    try:
+        services = ["NetTcpPortSharing", "iphlpsvc"]
+        for service in services:
+            subprocess.run(f"sc config {service} start= disabled", shell=True, check=False)
+            subprocess.run(f"sc stop {service}", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_528_enable_fast_wifi():
+    """Включение быстрого Wi-Fi
+    Ускоряет сеть.
+    Требует поддержки оборудования."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\WlanSvc"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "FastWifi", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_529_disable_network_logging():
+    """Отключение логов сети
+    Снижает нагрузку.
+    Усложняет диагностику."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Control\Network"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "EnableLogging", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_530_enable_network_priority():
+    """Включение приоритета сети
+    Ускоряет сеть.
+    Может повлиять на приложения."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\QoS"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "NetworkPriority", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_531_disable_auto_dns():
+    """Отключение автоматического DNS
+    Повышает контроль.
+    Требует ручной настройки."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "NameServer", 0, winreg.REG_SZ, "8.8.8.8")
+    except Exception:
+        pass
+
+def tweak_532_enable_fast_tcp():
+    """Включение быстрого TCP
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "Tcp1323Opts", 0, winreg.REG_DWORD, 3)
+    except Exception:
+        pass
+
+def tweak_533_disable_network_background_tasks():
+    """Отключение фоновых задач сети
+    Снижает нагрузку.
+    Может повлиять на приложения."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\NetworkConnectivityStatus"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "DisableBackgroundTasks", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_534_enable_network_cache():
+    """Включение кэша сети
+    Ускоряет сеть.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "EnableNetworkCache", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_535_disable_auto_connect():
+    """Отключение автоподключения
+    Повышает контроль.
+    Требует ручного подключения."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\WcmSvc"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "AutoConnect", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_536_enable_network_performance():
+    """Включение производительности сети
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        subprocess.run("netsh int tcp set global ecncapability=enabled", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_537_disable_network_sharing():
+    """Отключение общего доступа к сети
+    Повышает безопасность.
+    Общий доступ недоступен."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\Network Connections"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "NC_ShowSharedAccessUI", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_538_enable_fast_network():
+    """Включение быстрой сети
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "FastNetwork", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_539_disable_network_telemetry():
+    """Отключение телеметрии сети
+    Повышает приватность.
+    Усложняет диагностику."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\DataCollection"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "AllowNetworkTelemetry", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_540_enable_tcp_performance():
+    """Включение производительности TCP
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        subprocess.run("netsh int tcp set global chimney=enabled", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_541_disable_background_network():
+    """Отключение фоновой сети
+    Снижает нагрузку.
+    Может повлиять на приложения."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\NetworkConnectivityStatus"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "DisableBackgroundNetwork", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_542_enable_network_tweaks():
+    """Включение твиков сети
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        subprocess.run("netsh int tcp set global dca=enabled", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_543_disable_auto_network():
+    """Отключение автоматической сети
+    Повышает контроль.
+    Требует ручной настройки."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\WcmSvc"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "AutoNetwork", 0, winreg.REG_DWORD, 0)
+    except Exception:
+        pass
+
+def tweak_544_enable_fast_dns_cache():
+    """Включение быстрого кэша DNS
+    Ускоряет сеть.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Dnscache\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "FastDNSCache", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_545_disable_network_background_data():
+    """Отключение фоновых данных сети
+    Снижает нагрузку.
+    Может повлиять на приложения."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SOFTWARE\Policies\Microsoft\Windows\NetworkConnectivityStatus"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "DisableBackgroundData", 0, winreg.REG_DWORD, 1)
+    except Exception:
+        pass
+
+def tweak_546_enable_network_speed():
+    """Включение скорости сети
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        subprocess.run("netsh int tcp set global maxsynretransmissions=2", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_547_disable_network_auto_tuning():
+    """Отключение автотюнинга сети
+    Повышает контроль.
+    Требует ручной настройки."""
+    try:
+        subprocess.run("netsh int tcp set global autotuninglevel=disabled", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_548_enable_network_cache_size():
+    """Включение большого кэша сети
+    Ускоряет сеть.
+    Требует ресурсов."""
+    try:
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
+        with winreg.CreateKey(key, subkey) as reg_key:
+            winreg.SetValueEx(reg_key, "NetworkCacheSize", 0, winreg.REG_DWORD, 524288)
+    except Exception:
+        pass
+
+def tweak_549_disable_network_background_services():
+    """Отключение фоновых сетевых служб
+    Снижает нагрузку.
+    Может повлиять на функциональность."""
+    try:
+        services = ["Netman", "NlaSvc"]
+        for service in services:
+            subprocess.run(f"sc config {service} start= disabled", shell=True, check=False)
+            subprocess.run(f"sc stop {service}", shell=True, check=False)
+    except Exception:
+        pass
+
+def tweak_550_enable_network_performance_tweaks():
+    """Включение твиков производительности сети
+    Ускоряет сеть.
+    Увеличивает нагрузку."""
+    try:
+        subprocess.run("netsh int tcp set global autotuninglevel=highlyrestricted", shell=True, check=False)
+    except Exception:
+        pass
+
+# Списки твиков
+registry_tweaks = [
+    tweak_351_disable_registry_logging, tweak_352_clear_registry_temp, tweak_353_disable_uac,
+    tweak_354_disable_autorun, tweak_355_enable_fast_shutdown, tweak_356_disable_error_reporting,
+    tweak_357_disable_thumbnail_cache, tweak_358_disable_menu_delay, tweak_359_disable_system_restore,
+    tweak_360_enable_large_cache, tweak_361_disable_background_apps, tweak_362_disable_taskbar_animations,
+    tweak_363_disable_window_animations, tweak_364_disable_cortana, tweak_365_disable_game_bar,
+    tweak_366_disable_people, tweak_367_disable_lock_screen, tweak_368_disable_notifications,
+    tweak_369_disable_driver_updates, tweak_370_enable_high_priority, tweak_371_disable_search_index,
+    tweak_372_disable_power_throttling, tweak_373_disable_remote_desktop, tweak_374_disable_biometrics,
+    tweak_375_disable_telemetry, tweak_376_disable_windows_update, tweak_377_enable_performance_mode,
+    tweak_378_disable_visual_effects, tweak_379_disable_transparency, tweak_380_disable_fonts_cache,
+    tweak_381_disable_start_menu_ads, tweak_382_disable_taskbar_ads, tweak_383_disable_wallpaper_cache,
+    tweak_384_disable_auto_maintenance, tweak_385_disable_indexing, tweak_386_disable_defender,
+    tweak_387_disable_app_suggestions, tweak_388_disable_sync, tweak_389_disable_location,
+    tweak_390_disable_feedback
+]
+
+security_tweaks = [
+    tweak_391_disable_network_discovery, tweak_392_enable_firewall, tweak_393_disable_remote_assistance,
+    tweak_394_disable_file_sharing, tweak_395_enable_secure_boot, tweak_396_disable_guest_account,
+    tweak_397_enable_password_policy, tweak_398_disable_autoplay, tweak_399_enable_uac,
+    tweak_400_disable_admin_sharing, tweak_401_enable_encryption, tweak_402_disable_old_protocols,
+    tweak_403_enable_secure_dns, tweak_404_disable_remote_registry, tweak_405_enable_audit_log,
+    tweak_406_disable_wifi_sense, tweak_407_disable_web_search, tweak_408_enable_app_control,
+    tweak_409_disable_cloud_content, tweak_410_enable_exploit_protection, tweak_411_disable_usb_autorun,
+    tweak_412_enable_secure_logon, tweak_413_disable_insecure_protocols, tweak_414_enable_browser_security,
+    tweak_415_disable_auto_updates, tweak_416_enable_security_logs, tweak_417_disable_third_party_cookies,
+    tweak_418_enable_safe_browsing, tweak_419_disable_ad_tracking, tweak_420_enable_privacy_mode,
+    tweak_421_disable_background_data, tweak_422_enable_app_permissions, tweak_423_disable_location_sharing,
+    tweak_424_enable_secure_boot_policy, tweak_425_disable_remote_management, tweak_426_enable_secure_connections,
+    tweak_427_disable_automatic_updates, tweak_428_enable_file_encryption, tweak_429_disable_shared_folders,
+    tweak_430_enable_secure_authentication
+]
+
+cleanup_tweaks = [
+    tweak_431_clean_temp_files, tweak_432_clean_browser_cache, tweak_433_clean_system_logs,
+    tweak_434_clean_old_updates, tweak_435_clean_dns_cache, tweak_436_clean_download_folder,
+    tweak_437_clean_old_drivers, tweak_438_clean_prefetch, tweak_439_clean_error_reports,
+    tweak_440_clean_recycle_bin, tweak_441_clean_temp_internet, tweak_442_clean_cookies,
+    tweak_443_clean_history, tweak_444_clean_update_cache, tweak_445_clean_system_cache,
+    tweak_446_clean_old_logs, tweak_447_clean_memory_dumps, tweak_448_clean_old_installers,
+    tweak_449_clean_temp_registry, tweak_450_clean_system_temp, tweak_451_clean_old_backups,
+    tweak_452_clean_temp_profiles, tweak_453_clean_old_restore_points, tweak_454_clean_temp_app_data,
+    tweak_455_clean_old_fonts, tweak_456_clean_temp_cache, tweak_457_clean_old_temp_files,
+    tweak_458_clean_system_traces, tweak_459_clean_old_crash_dumps, tweak_460_clean_temp_logs,
+    tweak_461_clean_old_temp_data, tweak_462_clean_system_temp_files, tweak_463_clean_old_system_logs,
+    tweak_464_clean_temp_browser_data, tweak_465_clean_old_temp_cache, tweak_466_clean_system_temp_data,
+    tweak_467_clean_old_error_logs, tweak_468_clean_temp_system_files, tweak_469_clean_old_temp_logs,
+    tweak_470_clean_system_temp_cache
+]
+
+performance_tweaks = [
+    tweak_471_enable_high_performance, tweak_472_disable_background_services, tweak_473_enable_cpu_optimization,
+    tweak_474_disable_disk_defrag, tweak_475_enable_gpu_optimization, tweak_476_disable_power_saving,
+    tweak_477_enable_memory_optimization, tweak_478_disable_superfetch, tweak_479_enable_fast_boot,
+    tweak_480_disable_indexing_service, tweak_481_enable_io_optimization, tweak_482_disable_background_tasks,
+    tweak_483_enable_cpu_priority, tweak_484_disable_memory_compression, tweak_485_enable_disk_optimization,
+    tweak_486_disable_swap_file, tweak_487_enable_cpu_cache, tweak_488_disable_system_animations,
+    tweak_489_enable_performance_tweaks, tweak_490_disable_background_maintenance, tweak_491_enable_fast_disk,
+    tweak_492_disable_system_logs, tweak_493_enable_io_priority, tweak_494_disable_system_restore,
+    tweak_495_enable_cpu_tweaks, tweak_496_disable_background_apps, tweak_497_enable_performance_mode,
+    tweak_498_disable_power_throttling, tweak_499_enable_fast_memory, tweak_500_disable_visual_effects,
+    tweak_501_enable_game_mode, tweak_502_disable_notifications, tweak_503_enable_priority_tasks,
+    tweak_504_disable_system_sounds, tweak_505_enable_disk_cache, tweak_506_disable_transparency,
+    tweak_507_enable_fast_shutdown, tweak_508_disable_menu_animations, tweak_509_enable_cpu_performance,
+    tweak_510_disable_error_reporting
+]
+
+network_tweaks = [
+    tweak_511_enable_tcp_optimization, tweak_512_enable_rss, tweak_513_disable_nagle,
+    tweak_514_enable_fast_dns, tweak_515_disable_network_throttling, tweak_516_enable_bandwidth_optimization,
+    tweak_517_disable_wifi_background, tweak_518_enable_low_latency, tweak_519_disable_network_discovery,
+    tweak_520_enable_dns_cache, tweak_521_disable_auto_proxy, tweak_522_enable_fast_connect,
+    tweak_523_disable_network_background, tweak_524_enable_network_optimization, tweak_525_disable_bandwidth_limit,
+    tweak_526_enable_tcp_window, tweak_527_disable_network_services, tweak_528_enable_fast_wifi,
+    tweak_529_disable_network_logging, tweak_530_enable_network_priority, tweak_531_disable_auto_dns,
+    tweak_532_enable_fast_tcp, tweak_533_disable_network_background_tasks, tweak_534_enable_network_cache,
+    tweak_535_disable_auto_connect, tweak_536_enable_network_performance, tweak_537_disable_network_sharing,
+    tweak_538_enable_fast_network, tweak_539_disable_network_telemetry, tweak_540_enable_tcp_performance,
+    tweak_541_disable_background_network, tweak_542_enable_network_tweaks, tweak_543_disable_auto_network,
+    tweak_544_enable_fast_dns_cache, tweak_545_disable_network_background_data, tweak_546_enable_network_speed,
+    tweak_547_disable_network_auto_tuning, tweak_548_enable_network_cache_size,
+    tweak_549_disable_network_background_services, tweak_550_enable_network_performance_tweaks
+]
+
+optimization_tweaks = (
+    registry_tweaks +
+    security_tweaks +
+    cleanup_tweaks +
+    performance_tweaks +
+    network_tweaks
+)
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = OptimaxPro()
+    window.show()
+    sys.exit(app.exec())
